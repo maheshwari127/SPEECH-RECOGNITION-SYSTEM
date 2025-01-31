@@ -1,4 +1,4 @@
-# SPEECH-RECOGNITION-SYSTEM
+# Speech Transcription using Wav2Vec 2.0
 
 Welcome to the Speech Transcription project! This repository provides a solution for transcribing speech from WAV files using the powerful Wav2Vec 2.0 model. The pre-trained facebook/wav2vec2-large-xlsr-53 model supports multilingual speech recognition, making it versatile and effective for various languages.
 
