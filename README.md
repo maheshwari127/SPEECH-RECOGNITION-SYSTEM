@@ -1,1 +1,116 @@
 # SPEECH-RECOGNITION-SYSTEM
+
+Welcome to the Speech Transcription project! This repository provides a solution for transcribing speech from WAV files using the powerful Wav2Vec 2.0 model. The pre-trained facebook/wav2vec2-large-xlsr-53 model supports multilingual speech recognition, making it versatile and effective for various languages.
+
+## Features
+
+- **Multilingual Support**: Transcribe speech in 53 different languages.
+- **Easy to Use**: Simple steps to set up and run.
+- **Accurate Transcriptions**: Leverages advanced Wav2Vec 2.0 technology.
+- **Audio Chunking**: Automatically splits long audio files into 1-minute chunks for processing.
+
+
+## How It Works
+
+1. **Model and Processor**:
+   - Uses `facebook/wav2vec2-large-xlsr-53` for multilingual support.
+   - `Wav2Vec2Processor` handles audio preprocessing and decoding.
+
+2. **Audio Loading**:
+   - Reads the WAV file using `soundfile`.
+   - Converts the sample rate to 16kHz.
+   - Splits long audio files into 10-minute chunks using pydub.
+
+3. **Preprocessing**:
+   - Prepares the audio data to match the model's input requirements.
+
+4. **Inference**:
+   - Performs inference to get the logits.
+
+5. **Decoding**:
+   - Decodes the logits to produce the transcription text.
+   - Saves all transcriptions to a text file.
+
+## Setup Instructions
+
+Follow these simple steps to get started:
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/sebinbenjamin/wav2vec2-transcription.git
+cd wav2vec2-transcription
+
+```
+
+###  2. Create and Activate a Virtual Environment
+
+```bash
+python3 -m venv wav2vec_env
+source wav2vec_env/bin/activate
+```
+
+### 3. Install system dependencies:
+
+```bash
+sudo apt update
+sudo apt install pkg-config libssl-dev build-essential ffmpeg
+
+```
+
+###  3. Install the Required Libraries
+
+Upgrade pip and setuptools:
+
+```bash
+pip install --upgrade pip setuptools wheel
+```
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Install Rust Compiler (if needed)
+
+If the installation of tokenizers fails, install Rust:
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
+```
+
+## Running the Script
+
+Once you have your environment set up, follow these steps:
+
+#### 1. Prepare Your WAV File
+Ensure you have your WAV file ready (e.g., sample.wav).
+
+#### 2. Run the Transcription Script:
+You can run the script with a specific WAV file and optionally specify the model name:
+```bash
+python3 transcribe.py path/to/your/file.wav
+```
+
+If you want to use a different pre-trained model, you can specify the model name using the --model_name parameter:
+
+```bash
+python3 transcribe.py path/to/your/file.wav --model_name wav2vec2-large-xlsr-53-italian
+```
+
+If you don't provide any command-line arguments, the script will use sample.wav as the input file and facebook/wav2vec2-large-xlsr-53 as the model name.
+
+```bash
+python3 transcribe.py
+```
+### 3. 3. View the Transcriptions
+The transcriptions will be saved in a file named `transcriptions.txt`.
+
+## Final Notes
+
+*Language Support*: The facebook/wav2vec2-large-xlsr-53 model supports 53 languages, making it versatile for multilingual speech recognition.
+ 
+*Sampling Rate*: Ensure your WAV file is sampled at 16kHz for the best results. Though the script will automatically convert the sample rate if necessary.
+
+With this setup, you should be able to transcribe speech from a WAV file efficiently using the powerful Wav2Vec 2.0 model.
+
+Happy transcribing!
